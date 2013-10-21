@@ -72,7 +72,7 @@ var combat = {
 			 * Missed!
 			 */
 			} else {
-				console.log(player.name + ' misses ' + monsters[monster].name + '(' + youHit + ')' + monster + '!', 'Monster Stats', monsters);
+				console.log(player.name + ' miss ' + monsters[monster].name  + ' ' + monster + '(' + youHit + ')!', 'Monster Stats', monsters);
 			}
 			return youHit;
 		/**
