@@ -1,5 +1,32 @@
-//Notes: how can we scale % with player level?
- 
+//Notes: how can we scale % with player level? 
+//Use scale as a multiplier for all stats after the level of the monster vs the level of the player. 
+
+var Monsters = {
+	loadMonster: function(monster){
+		return Monsters.monster(monster);
+	},
+	difficulty: {},
+	monster: {
+		large_rat: {
+			name: 'Large Rat',
+			difficulty: 10,
+			level: 1,
+			scale: 0.20
+		},
+		kobold: {
+			name: 'Large Rat',
+			difficulty: 10,
+			level: 10,
+			scale: 0.20
+		}
+	}
+};
+
+for(var monster in Monsters.monster){
+	Monsters.difficulty[monster] = Monsters.monster[monster].difficulty;
+}
+
+console.log(Monsters);
 
 //monster stats
 //Monsters can have normal advanced and named version
