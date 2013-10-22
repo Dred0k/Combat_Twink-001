@@ -1,16 +1,34 @@
 /**
+ * 
+ * Equipment Object. Should be turned into a Mongo Schema and Pushed into a DB.
+ * @type {Object}
+ */
+var equipment = {
+	weapons : {
+		axe: {
+			d: 12,
+			name: 'Vorpal Axe of Pwnage'
+		},
+		sword: 10,
+		dagger: 6
+	},
+	armor: {
+		shield: {
+			ac: 4,
+			hp: 0
+		}
+	},
+	misc: {
+		bracer: {
+			ac: 1
+		}
+	}
+};
+
+/**
  * Player Object. 1 Player.
  * @type {Object}
  */
-var weapons = {
-	axe: {
-		d: 12,
-		name: 'Vorpal Axe of Pwnage'
-	},
-	sword: 10,
-	dagger: 6
-};
-
 var player = {
 	isAlive: true,
 	hitpoints: 20,
@@ -19,7 +37,7 @@ var player = {
 	toDamage: 5,
 	toCrit: 0.20,
 	name: 'Dredok',
-	weapon: weapons.axe
+	weapon: equipment.weapons.axe
 };
 
 /**
