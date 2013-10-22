@@ -2,6 +2,15 @@
  * Player Object. 1 Player.
  * @type {Object}
  */
+var weapons = {
+	axe: {
+		d: 12,
+		name: 'Vorpal Axe of Pwnage'
+	},
+	sword: 10,
+	dagger: 6
+};
+
 var player = {
 	isAlive: true,
 	hitpoints: 20,
@@ -9,7 +18,8 @@ var player = {
 	toHit: 3,
 	toDamage: 5,
 	toCrit: 0.20,
-	name: 'Dredok'
+	name: 'Dredok',
+	weapon: weapons.axe
 };
 
 /**
@@ -38,6 +48,11 @@ var monsters = [
 ];
 
 var combat = {
+	diceRoll: function(sides){
+		return Math.floor(
+			(Math.random() * parseInt(sides, 10)) + 1
+		);
+	},
 	/**
 	 * Attack Roll Function. Does Damage!
 	 * @param  {object} player  player object with status
@@ -53,33 +68,32 @@ var combat = {
 			 * Random Hit!
 			 * @type int
 			 */
-			youHit = Math.floor(
-				(Math.random() * 20) + 1
-			);
+			var diceRoll = combat.diceRoll(20);
+			var damageRoll = combat.diceRoll(player.weapon.d) + player.toDamage;
 			/**
 			 * Did you hit with your mods?
 			 */
-			if(youHit >  monsters[monster].armorClass - player.toHit){
-				monsters[monster].hitpoints = monsters[monster].hitpoints - player.toDamage;
+			if(diceRoll >  monsters[monster].armorClass - player.toHit){
+				monsters[monster].hitpoints = monsters[monster].hitpoints - damageRoll;
 				/**
 				 * Did you kill it?!?!
 				 */
 				if(monsters[monster].hitpoints <= 0){
 					monsters[monster].isAlive = false;
 				}
-				console.log(player.name + ' hits ' + monsters[monster].name + ' ' + monster + '(' + youHit + ') for ' + player.toDamage + '!', 'Monster Stats', monsters);
+				utils.toLog(player.name + ' hits ' + monsters[monster].name + ' ' + monster + '(' + diceRoll + ') for ' + damageRoll + ' with his ' + player.weapon.name, 'Monster Stats', monsters);
 			/**
 			 * Missed!
 			 */
 			} else {
-				console.log(player.name + ' miss ' + monsters[monster].name  + ' ' + monster + '(' + youHit + ')!', 'Monster Stats', monsters);
+				utils.toLog(player.name + ' miss ' + monsters[monster].name  + ' ' + monster + '(' + diceRoll + ')!', 'Monster Stats', monsters);
 			}
-			return youHit;
+			return diceRoll;
 		/**
 		 * It's already dead! Stop attacking it!
 		 */
 		} else {
-			console.log(monsters[monster].name + ' ' + monster + ' is already dead!', 'Monster Stats', monsters);
+			utils.toLog(monsters[monster].name + ' ' + monster + ' is already dead!', 'Monster Stats', monsters);
 		}
 	},
 	/**
@@ -101,6 +115,13 @@ var combat = {
 
 	}
 };
+var utils = {
+	toLog: function(text){
+		var log = $('.log');
+		var currentText = log.val();
+		log.val(currentText + '\r\n' + text);
+	}
+};
 /**
  * jQuery Actions
  * @return void
@@ -111,7 +132,7 @@ $(document).ready(function(){
 		/**
 		 * Attack Random Monster
 		 */
-		combat.attackRoll(player, Math.floor( ( Math.random()* (monsters.length) ) + 0));
+		combat.attackRoll(player, Math.floor( ( Math.random() * (monsters.length) ) + 0));
 	});
 	
 });
