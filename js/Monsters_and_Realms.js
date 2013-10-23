@@ -1,3 +1,5 @@
+// test GitHub upload
+
 //Notes: how can we scale % with player level? 
 //Use scale as a multiplier for all stats after the level of the monster vs the level of the player. 
 
