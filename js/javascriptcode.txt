@@ -1,0 +1,57 @@
+(button onClick)rest
+	if player.incombat = ture
+		cannot rest while in combat
+	else
+		player.health = player.healthMax
+
+
+(button onClick)explore
+	D100
+		if 1-25 find nothing
+			player.inCombat = false
+		if 26-100 encounter monster
+			player.inCombat = true
+			monster = monster
+
+(button onClick)Run
+	d100
+		if 1-50
+			monsterAttack
+		if 51-100
+		Break Combat
+		monster = false
+
+
+(button onClick)attack				
+	
+//	Determine initiative
+		using  10 + Dex + D20
+		if == reroll D20
+			playerAttack
+			monsterAttack
+
+//	playerAttack
+		if d20 + player.attackBonus > monster.armorClass
+			monster.hitpoints = monster.hitpoints - (weapon.damage + player.str)
+		else
+			player misses text
+
+
+//	monsterAttack
+		if d20 + monster.attackBonus > player.armorClass
+			monster.hitpoints = monster.hitpoints - (weapon.damage + player.str)
+		else
+			monster misses text
+
+//	end of round
+		If plater.isalive = false
+			playerDeath
+		else if monster.alive = false
+			player.incombat = false
+			add gold
+			add exp
+			
+	
+
+playerDeath
+	reset player gold, exp, stats, ect.
