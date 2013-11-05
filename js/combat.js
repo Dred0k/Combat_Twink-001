@@ -65,6 +65,31 @@ var monsters = [
 	new monster()
 ];
 
+
+/**
+// Our Monster constructor
+function monster (name, isAlive, hitpoints, armorClass, toHit) {
+    	isAlive = true;
+	hitpoints =  hitpoints;
+	armorClass = armorClass;
+	toHit = toHit;
+	name =  name;
+}
+
+// Now we can make an array of monsters
+var monsterArray = new Array();
+monsterArray[0] = new monster("Goblin", true, 10, 14, 0);
+monsterArray[1] = new monster("Goblin", true, 10, 14, 0);
+monsterArray[2] = new monster("Goblin", true, 10, 14, 0);
+monsterArray[3] = new monster("Goblin Warrior", true, 20, 16, 2);
+
+// loop through our new array
+for(var i=0 ; i < monsterArray.length; i++){
+    console.log(monsterArray[i].name + "words and stuff")
+}
+
+*/
+
 var combat = {
 	diceRoll: function(sides){
 		return Math.floor(
