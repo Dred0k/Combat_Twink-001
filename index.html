@@ -9,59 +9,135 @@
     </head>
     
 	<body>
-		<!-- Game settings and options area -->
-		<div class="container game">
-            <div class="row">
-                <div class="col-lg-6">
-        			<button class="btn btn-primary game" type="button" disabled="disabled">New Game</button>
-        			<button class="btn btn-primary game" type="button" disabled="disabled">Save Game</button>
-        			<button class="btn btn-primary game" type="button" disabled="disabled">Load Game</button>
-                </div>
-            </div>
-		</div>
-		
-		<!-- player stats and inventory area -->
-		<div class="container player-stats">
-			<div class="row">
-			</div>
-		</div>
-		
-		<!-- Combat options area -->
-		<div class="container combat">
-            <div class="row">
-                <div class="col-lg-6">
-        			<button class="btn btn-primary fight" type="button" value="attack">Fight!</button>
-        			<button class="btn btn-primary run" type="button" value="run">Run!</button>
-        			<button class="btn btn-primary rest" type="button" value="rest">Rest</button>
-                </div>
-            </div>
-		</div>
-		
-		<!-- exploration options area -->
-		<div class="container explore">
-            <div class="row">
-			    <!-- will be the only option at the beginning of the game -->
-				<!-- this will random between nothing, encounter, or area unlock -->
-				<div class="col-lg-6">
-        			<button class="btn btn-primary explore" type="button">Explore Antonica</button>
-                </div>
-				<!-- these areas unlock able by explore button or quests -->
-				<div class="col-lg-6">
-        			<button class="btn btn-primary explore" type="button" disabled="disabled">Ferrott</button>
-        			<button class="btn btn-primary explore" type="button" disabled="disabled">Rathe Mountains</button>
-        			<button class="btn btn-primary explore" type="button" disabled="disabled">Lake Rathetear</button>
-        			<button class="btn btn-primary explore" type="button" disabled="disabled">Desert of RO</button>
-        			<button class="btn btn-primary explore" type="button" disabled="disabled">The Arena</button>
-        			<button class="btn btn-primary explore" type="button" disabled="disabled">Karana</button>
-                </div>			
-            </div>
-		</div>
-	
-		<!-- game test and information will be inserted here -->
-		<!-- new information on to and old information pushed down. 
-		old test should fade and be removed from window after a little time -->
-		<div class="col-lg-6">
-			<textarea rows="500" class="form-control log"></textarea>
-		</div>
+<div class="container" id="system">
+    <button class="btn btn-primary game" type="button" disabled="disabled">New Game</button>
+    <button class="btn btn-primary game" type="button" disabled="disabled">Save Game</button>
+    <button class="btn btn-primary game" type="button" disabled="disabled">Load Game</button>
+</div>
+<div class="container" id="consolelog">
+    <p>Current location:</p>
+    <p>Location Description:</p>
+    <p>Current Info:</p>
+    <p>Current more info:</p>
+    <textarea rows="20" class="form-control log"></textarea>
+</div>
+<div class="container" id="playerinfo">
+    <table>
+        <tr>
+            <td>Character Name:</td>
+            <td>XxxxxX</td>
+        </tr>
+        <tr>
+            <td>Character Race:</td>
+            <td>XxxxxX</td>
+        </tr>
+        <tr>
+            <td>Character Class:</td>
+            <td>XxxxxX</td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>Str:</td>
+            <td>XX</td>
+            <td>Dex:</td>
+            <td>XX</td>
+            <td>Con:</td>
+            <td>XX</td>
+        </tr>
+        <tr>
+            <td>Int:</td>
+            <td>XX</td>
+            <td>Wis:</td>
+            <td>XX</td>
+            <td>Cha:</td>
+            <td>XX</td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>Hit Points:</td>
+            <td>XX</td>
+            <td>Armor Class:</td>
+            <td>XX</td>
+            <td>Initiative:</td>
+            <td>XX</td>
+        </tr>
+    </table>
+</div>
+<div class="container" id="commandbuttons">
+    <div class="col-lg-6">
+        <button class="btn btn-primary fight" type="button" value="attack">Fight!</button>
+        <button class="btn btn-primary run" type="button" value="run">Run!</button>
+        <button class="btn btn-primary rest" type="button" value="rest">Rest</button>
+    </div>
+    <div class="col-lg-6">
+        <button class="btn btn-primary explore" type="button">Explore Antonica</button>
+    </div>
+    <!-- these areas unlock able by explore button or quests -->
+    <div class="col-lg-6">
+        <button class="btn btn-primary explore" type="button" disabled="disabled">Ferrott</button>
+        <button class="btn btn-primary explore" type="button" disabled="disabled">Rathe Mountains</button>
+        <button class="btn btn-primary explore" type="button" disabled="disabled">Lake Rathetear</button>
+        <button class="btn btn-primary explore" type="button" disabled="disabled">Desert of RO</button>
+        <button class="btn btn-primary explore" type="button" disabled="disabled">The Arena</button>
+        <button class="btn btn-primary explore" type="button" disabled="disabled">Karana</button>
+    </div>
+</div>
+<div class="container" id="inventory">
+    <table>
+        <tr>
+            <td>Head:</td>
+            <td>XxxxxX</td>
+            <td>Neck:</td>
+            <td>XxxxxX</td>
+        </tr>
+        <tr>
+            <tr>
+                <td>Shoulders:</td>
+                <td>XxxxxX</td>
+                <td>Trinket:</td>
+                <td>XxxxxX</td>
+            </tr>
+            <tr>
+                <td>Chest:</td>
+                <td>XxxxxX</td>
+                <td>Ear:</td>
+                <td>XxxxxX</td>
+            </tr>
+            <tr>
+                <td>Gloves:</td>
+                <td>XxxxxX</td>
+                <td>Ring:</td>
+                <td>XxxxxX</td>
+            </tr>
+            <tr>
+                <td>Belt:</td>
+                <td>XxxxxX</td>
+                <td>Ring:</td>
+                <td>XxxxxX</td>
+            </tr>
+            <tr>
+                <td>Legs:</td>
+                <td>XxxxxX</td>
+                <td>Focus:</td>
+                <td>XxxxxX</td>
+            </tr>
+            <tr>
+                <td>Feet:</td>
+                <td>XxxxxX</td>
+                <td>?:</td>
+                <td>XxxxxX</td>
+            </tr>
+            <tr>
+                <td>Mainhand:</td>
+                <td>XxxxxX</td>
+                <td>Offhand:</td>
+                <td>XxxxxX</td>
+            </tr>
+    </table>
+</div>
 	</body>  
 </html>
