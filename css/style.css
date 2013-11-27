@@ -1,0 +1,26 @@
+div.container {
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #FA6900;
+}
+#system {
+    height: 50px;
+    width: 800px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #FA6900;
+}
+#consolelog {
+    height: 600px;
+    width: 500px;
+    background-color: #000000;
+    float:right;
+    color: #00FF00;
+}
+table {
+    border: 1px solid black;
+}
