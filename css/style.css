@@ -1,26 +1,32 @@
-div.container {
-    height: 200px;
-    width: 300px;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    background-color: #FA6900;
+#wrapper {
+    width: 1050px;
+    margin: 0 auto;
 }
-#system {
-    height: 50px;
-    width: 800px;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    background-color: #FA6900;
+.mainLeft {
+    height: auto;
+    width: 500px;
+    float: left;
+}
+.mainRight{
+    height: auto;
+    width: 500px;
+    float: right;
 }
 #consolelog {
-    height: 600px;
-    width: 500px;
     background-color: #000000;
-    float:right;
     color: #00FF00;
+}
+#system {
+    height: 30px;
+    width: 300px;
 }
 table {
     border: 1px solid black;
+    padding: 5px;
+    /*color: white;*/
+    padding: 5px;
+    margin: 10px;
+}
+td {
+    padding: 2px;
 }
