@@ -1,57 +1,219 @@
-(button onClick)rest
-	if player.incombat = ture
-		cannot rest while in combat
-	else
-		player.health = player.healthMax
+$(document).ready(function () {
 
+    var player = {
+        isAlive: true,
+        hitpoints: 18,
+        maxhitpoints: 20,
+        armorClass: 18,
+        toHit: 3,
+        toDamage: 5,
+        xp: 0,
+        name: 'Dredok',
+        //addtitional non monster info
+        race: "Human",
+        class: "Fighter",
+        weapon: 'Wooden Sword',
+        stats: {
+            str: 11,
+            con: 13,
+            dex: 10,
+            int: 14,
+            wis: 10,
+            cha: 10,
+        }
+    };
+    
+    /*Adcanced Monster Creation - Add Later
+    
+    function Monster(health,AC,hitMod,hitDamage,name) {
+        this.isAlive= true;
+        this.hitpoints= health;
+        this.maxhitpoints= health;
+        this.armorClass= AC;
+        this.toHit= hitMod;
+        this.toDamage= hitDamage;
+        this.name= name;
+    } 
+    //example constructors
+    var goblinKing = new Monster(12,16,1,2,"Goblin King");
+    var goblin_1 = new Monster(6,14,0,1,"Goblin 2");
+    var goblin_2 = new Monster(6,14,0,1,"Goblin 3");
+    
+    //Start Encounter
+    encounterSize  = diceRoll(X)
 
-(button onClick)explore
-	D100
-		if 1-25 find nothing
-			player.inCombat = false
-		if 26-100 encounter monster
-			player.inCombat = true
-			monster = monster
+    //generate monsters using construction and store monsters into array
+    var Monsters = [];
+    for (i=0; i < encounterSize; i++){
+        Monsters[i] = new monster(x, x, x, x, x, "Goblin " + (i + 1) )
+    };
 
-(button onClick)Run
-	d100
-		if 1-50
-			monsterAttack
-		if 51-100
-		Break Combat
-		monster = false
+    //some encounters will be boss + minions, encounterSize only give # of minions
+    numberOfMonsters = Monsters[].length //gives number of monsters
+    killcounter = 0
 
+    //start of combat 
+    
+    combat(player, Monsters[encounterSize])
+    //once a round player attacks last monster in array 
+    if (Monsters[encounterSize].hitpoints < 1){
+        encountersize--
+        //shrink monsters array size so no attacking dead monsters
+    }
+    
+    //each monster in array gets to attack once
+    for (i=0; i < encounterSize; i++){ 
+        combat(Monsters[i], player)
+    }
+*/
+    
+    var monster = {
+		isAlive: false, //false = player not in combat
+		hitpoints: 6,
+		maxhitpoints: 6,
+		armorClass: 14,
+		toHit: 0,
+		toDamage: 1,
+		name: 'Goblin',
+    };
+    
 
-(button onClick)attack				
+	function toLog(text){
+		var log = $('.log');
+		var currentText = log.val();
+		log.val(currentText + '\r\n' + text);
+	}
 	
-//	Determine initiative
-		using  10 + Dex + D20
-		if == reroll D20
-			playerAttack
-			monsterAttack
+    function updateStatBox() {
+        $(".str").html(player.stats.str);
+        $(".con").html(player.stats.con);
+        $(".dex").html(player.stats.dex);
+        $(".int").html(player.stats.int);
+        $(".wis").html(player.stats.wis);
+        $(".cha").html(player.stats.cha);
+        $(".hp").html(player.hitpoints + "/"  + player.maxhitpoints);
+        $(".ac").html(player.armorClass);
+        $(".init").html("NA");
+    }
+    function updatePlayerInfo() {
+        $(".name").html(player.name);
+        $(".race").html(player.race);
+        $(".class").html(player.class);
+    }
+    function updatePlayerequipment() {
+        $(".empty").html("empty");
+    }
+    function updatePlayerlocation() {
+        $("#currentlocation").html("Antonica, Norrath");
+        //Location Description
+        //Current Info
+        //Current more info
+    }
+    
+    function diceRoll(sides){
+		return Math.floor(
+			(Math.random() * parseInt(sides, 10)) + 1);
+     }
 
-//	playerAttack
-		if d20 + player.attackBonus > monster.armorClass
-			monster.hitpoints = monster.hitpoints - (weapon.damage + player.str)
-		else
-			player misses text
+    //Begin Basic Combat Functions (Advanced Function to come later)
+    //Double Function (bad coding) playerAttack monsterAttack
+    //Make single function "attack()" in Advanced Combat
+    function playerAttack(player, monster){
+        var dicerolled = diceRoll(20);
+        if (dicerolled == 20){
+            //nat 20 double damage
+        } else if (dicerolled + player.toHit > monster.armorClass){
+            //Hit - do normal damage
+        } else {
+            //you miss you suck
+        }
+        //determin outcome monsterDeath
+        if (monster.isAlive === false){
+            monsterDeath();
+        }
+    }
+    function monsterAttack(monster, player){
+        var dicerolled = diceRoll(20);
+        if (dicerolled == 20){
+            //nat 20 rend
+        } else if (dicerolled + player.toHit > monster.armorClass){
+            //Hit - do normal damage
+        } else {
+            //you miss you suck
+        }
+        //determin outcome playerDeath?
+            if (player.hitpoints > 0){
+            player.isAlive = false
+            playerDeath();
+        }
+    }
+    function playerDeath(){
+        toLog("You have been defeated!");
+        //reset player
+        
+    }
+    function monsterDeath(){
+        //enable explore functions until monster.isAlive = false
+        //enable rest functions until monster.isAlive = false
+    }
+    //Advanced combat
+    function combat(attacker, defender){
+        var dicerolled = diceRoll(20);
+        if (dicerolled == 20){
+            //nat 20 double damage
+        } else if (dicerolled + attacker.toHit > defender.armorClass){
+            //Hit - do normal damage
+        } else {
+            //you miss you suck
+        }
+        //determin outcome monsterDeath
+        if (monster.isAlive === false){
+            monsterDeath();
+        }
+    }
+    //End Combat functions
 
+    updateStatBox(player);
+    updatePlayerInfo(player);
+    updatePlayerequipment();
+    updatePlayerlocation();
+    
+    
+    //System Buttons
+    $('#newGame').click(function() {
+        playerDeath()
+    });    
+    //Action Buttons
+    $('#fight').click(function() {
+        combat(player, monster);
+        comabt(monster, player);
+    //  combat(monsters[], player);  
+    //not sure how to make this one work yet
+    //will finish single combat before starting mass combat code
+    });       
+    $('#rest').click(function() {
+        player.hitpoints = player.maxhitpoints;
+        updateStatBox(player);
+        toLog("You rest for the night and heal your wounds.");
+    });
+    $('#run').click(function() {
+        monster.isAlive = false ;
+        toLog("you turn tail and run like a coward")
+    });
+    //Exploration butons
+    $('#exploreAntonica').click(function() {
+        toLog("You set out to explore the lands of Antonica and search for adventure.");
+        if(diceRoll(100)>30){
+            toLog("You encounter a monster <add more text later>");
+            monster.isAlive = true;
+            //disable explore functions until monster.isAlive = false
+            //disable rest functions until monster.isAlive = false
+        } else {
+            toLog("You search until you feel exausted but find nothing of interest.");
+            player.hitpoints = player.hitpoints - 1;
+            updateStatBox(player);
+        }
+    });
+    
+});
 
-//	monsterAttack
-		if d20 + monster.attackBonus > player.armorClass
-			monster.hitpoints = monster.hitpoints - (weapon.damage + player.str)
-		else
-			monster misses text
-
-//	end of round
-		If plater.isalive = false
-			playerDeath
-		else if monster.alive = false
-			player.incombat = false
-			add gold
-			add exp
-			
-	
-
-playerDeath
-	reset player gold, exp, stats, ect.
