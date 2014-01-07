@@ -6,138 +6,181 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="js/combat.js"></script>
-    </head>
     
-	<body>
-<div class="container" id="system">
-    <button class="btn btn-primary game" type="button" disabled="disabled">New Game</button>
-    <button class="btn btn-primary game" type="button" disabled="disabled">Save Game</button>
-    <button class="btn btn-primary game" type="button" disabled="disabled">Load Game</button>
-</div>
-<div class="container" id="consolelog">
-    <p>Current location:</p>
-    <p>Location Description:</p>
-    <p>Current Info:</p>
-    <p>Current more info:</p>
-    <textarea rows="20" class="form-control log"></textarea>
-</div>
-<div class="container" id="playerinfo">
-    <table>
-        <tr>
-            <td>Character Name:</td>
-            <td>XxxxxX</td>
-        </tr>
-        <tr>
-            <td>Character Race:</td>
-            <td>XxxxxX</td>
-        </tr>
-        <tr>
-            <td>Character Class:</td>
-            <td>XxxxxX</td>
-        </tr>
-    </table>
-    <br>
-    <table>
-        <tr>
-            <td>Str:</td>
-            <td>XX</td>
-            <td>Dex:</td>
-            <td>XX</td>
-            <td>Con:</td>
-            <td>XX</td>
-        </tr>
-        <tr>
-            <td>Int:</td>
-            <td>XX</td>
-            <td>Wis:</td>
-            <td>XX</td>
-            <td>Cha:</td>
-            <td>XX</td>
-        </tr>
-    </table>
-    <br>
-    <table>
-        <tr>
-            <td>Hit Points:</td>
-            <td>XX</td>
-            <td>Armor Class:</td>
-            <td>XX</td>
-            <td>Initiative:</td>
-            <td>XX</td>
-        </tr>
-    </table>
-</div>
-<div class="container" id="commandbuttons">
-    <div class="col-lg-6">
-        <button class="btn btn-primary fight" type="button" value="attack">Fight!</button>
-        <button class="btn btn-primary run" type="button" value="run">Run!</button>
-        <button class="btn btn-primary rest" type="button" value="rest">Rest</button>
+</head>
+<!--...........................................................-->
+<body>
+
+<div id='wrapper'>
+    <!--Start mainLeft -->
+    <div class="mainLeft">
+        <!--Start systemButtons -->
+        <div class="btn-group">
+            <button class="btn btn-xs btn-primary game" type="button" id="newGame">New Game</button>
+            <button class="btn btn-xs btn-primary game" type="button" disabled="disabled">Save Game</button>
+            <button class="btn btn-xs btn-primary game" type="button" disabled="disabled">Load Game</button>
+        </div>
+        <br>
+        <!-- Spacing elements -->
+        <!--End systemButtons -->
+        <div class="container" id="playerinfo">
+            <p>Character</p>
+            <table>
+                <tr>
+                    <th>Name:</th>
+                    <td class="name">XxxxxX</td>
+                </tr>
+                <tr>
+                    <th>Race:</th>
+                    <td class="race">XxxxxX</td>
+                </tr>
+                <tr>
+                    <th>Class:</th>
+                    <td class="class">XxxxxX</td>
+                </tr>
+            </table>
+            <table id="playerStats">
+                <tr>
+                    <th>Str:</th>
+                    <td class="str"></td>
+                    <th>Dex:</th>
+                    <td class="dex">XX</td>
+                    <th>Con:</th>
+                    <td class="con">XX</td>
+                </tr>
+                <tr>
+                    <th>Int:</th>
+                    <td class="int">XX</td>
+                    <th>Wis:</th>
+                    <td class="wis">XX</td>
+                    <th>Cha:</th>
+                    <td class="cha">XX</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Hit Points:</td>
+                    <td class="hp">XX</td>
+                    <td >Armor Class:</td>
+                    <td class="ac">XX</td>
+                    <td>Initiative:</td>
+                    <td class="init">XX</td>
+                </tr>
+            </table>
+        </div>
+        <br>>
+        <!-- Spacing elements -->
+        <div class="container" id="commandbuttons">
+            <div class="col-lg-6">
+                <div class="btn-group">
+                    <button class="btn btn-xs btn-danger fight" type="button" id="attack">Fight!</button>
+                    <button class="btn btn-xs btn-primary run" type="button" id="run">Run!</button>
+                    <button class="btn btn-xs btn-primary rest" type="button" id="rest">Rest</button>
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- Spacing elements -->
+            <div class="col-lg-6">
+                <button class="btn btn-xs btn-primary" id="exploreAntonica" "type="button">Explore Antonica</button>
+            </div>
+            <br>
+            <!-- these areas unlockable by explore button or quests -->
+            <div class="col-lg-6">
+                <button class="btn btn-xs btn-primary" data-value="rathe" type="button" disabled="disabled">Ferrott</button>
+                <button class="btn btn-xs btn-primary" data-value="rathe" type="button" disabled="disabled">Rathe Mountains</button>
+                <button class="btn btn-xs btn-primary" type="button" disabled="disabled">Lake Rathetear</button>
+                <button class="btn btn-xs btn-primary" type="button" disabled="disabled">Desert of RO</button>
+                <button class="btn btn-xs btn-primary" type="button" disabled="disabled">The Arena</button>
+                <button class="btn btn-xs btn-primary" type="button" disabled="disabled">Karana</button>
+            </div>
+        </div>
+        <br>
+        <!-- Spacing elements -->
+        <!-- -->
+        <div class="container" id="inventory">
+            <table>
+                <tr>
+                    <td>Head:</td>
+                    <td class="empty">XxxxxX</td>
+                    <td>Neck:</td>
+                    <td class="empty">XxxxxX</td>
+                </tr>
+                <tr>
+                    <tr>
+                        <td>Shoulders:</td>
+                        <td class="empty">XxxxxX</td>
+                        <td>Trinket:</td>
+                        <td class="empty">XxxxxX</td>
+                    </tr>
+                    <tr>
+                        <td>Chest:</td>
+                        <td class="empty">XxxxxX</td>
+                        <td>Ear:</td>
+                        <td class="empty">XxxxxX</td>
+                    </tr>
+                    <tr>
+                        <td>Gloves:</td>
+                        <td class="empty">XxxxxX</td>
+                        <td>Ring:</td>
+                        <td class="empty">XxxxxX</td>
+                    </tr>
+                    <tr>
+                        <td>Belt:</td>
+                        <td class="empty">XxxxxX</td>
+                        <td>Ring:</td>
+                        <td class="empty">XxxxxX</td>
+                    </tr>
+                    <tr>
+                        <td>Legs:</td>
+                        <td class="empty">XxxxxX</td>
+                        <td>Focus:</td>
+                        <td class="empty">XxxxxX</td>
+                    </tr>
+                    <tr>
+                        <td>Feet:</td>
+                        <td class="empty">XxxxxX</td>
+                        <td>?:</td>
+                        <td class="empty">XxxxxX</td>
+                    </tr>
+                    <tr>
+                        <td>Mainhand:</td>
+                        <td class="empty">XxxxxX</td>
+                        <td>Offhand:</td>
+                        <td class="empty">XxxxxX</td>
+                    </tr>
+            </table>
+        </div>
+        <!-- -->
     </div>
-    <div class="col-lg-6">
-        <button class="btn btn-primary explore" type="button">Explore Antonica</button>
-    </div>
-    <!-- these areas unlock able by explore button or quests -->
-    <div class="col-lg-6">
-        <button class="btn btn-primary explore" type="button" disabled="disabled">Ferrott</button>
-        <button class="btn btn-primary explore" type="button" disabled="disabled">Rathe Mountains</button>
-        <button class="btn btn-primary explore" type="button" disabled="disabled">Lake Rathetear</button>
-        <button class="btn btn-primary explore" type="button" disabled="disabled">Desert of RO</button>
-        <button class="btn btn-primary explore" type="button" disabled="disabled">The Arena</button>
-        <button class="btn btn-primary explore" type="button" disabled="disabled">Karana</button>
-    </div>
-</div>
-<div class="container" id="inventory">
-    <table>
+    <!--End mainLeft -->
+    <!--Start mainRight -->
+    <div class="mainRight">
+        <div class="container" id="consolelog">
+        <table>
         <tr>
-            <td>Head:</td>
-            <td>XxxxxX</td>
-            <td>Neck:</td>
-            <td>XxxxxX</td>
+            <td>Current location:</td>
+            <td id="currentlocation"></td>
         </tr>
         <tr>
-            <tr>
-                <td>Shoulders:</td>
-                <td>XxxxxX</td>
-                <td>Trinket:</td>
-                <td>XxxxxX</td>
-            </tr>
-            <tr>
-                <td>Chest:</td>
-                <td>XxxxxX</td>
-                <td>Ear:</td>
-                <td>XxxxxX</td>
-            </tr>
-            <tr>
-                <td>Gloves:</td>
-                <td>XxxxxX</td>
-                <td>Ring:</td>
-                <td>XxxxxX</td>
-            </tr>
-            <tr>
-                <td>Belt:</td>
-                <td>XxxxxX</td>
-                <td>Ring:</td>
-                <td>XxxxxX</td>
-            </tr>
-            <tr>
-                <td>Legs:</td>
-                <td>XxxxxX</td>
-                <td>Focus:</td>
-                <td>XxxxxX</td>
-            </tr>
-            <tr>
-                <td>Feet:</td>
-                <td>XxxxxX</td>
-                <td>?:</td>
-                <td>XxxxxX</td>
-            </tr>
-            <tr>
-                <td>Mainhand:</td>
-                <td>XxxxxX</td>
-                <td>Offhand:</td>
-                <td>XxxxxX</td>
-            </tr>
-    </table>
+            <td>Location Description:</td>
+            <td id="locationDescription"></td>
+        </tr>
+        <tr>
+            <td>Current Info:</td>
+            <td id="currentInfo"></td>
+        </tr>
+        <tr>
+            <td>More Info:</td>
+            <td id="moreInfo"></td>
+        </tr>
+        </table>
+            <textarea rows="25" class="form-control log"></textarea>
+        </div>
+    </div>
+    <!--End mainRight Combat Log -->
 </div>
-	</body>  
+<!-- End id='wrapper' -->
+</body>
+
 </html>
